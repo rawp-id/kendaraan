@@ -14,10 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
-//     return view('layout.app');
-// });
-
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('login', [AuthController::class, 'showLoginForm']);
@@ -42,4 +38,3 @@ Route::middleware([SuperAdminMiddleware::class])->group(function () {
     Route::Resource('approvals', ApprovalController::class);
 });
 
-Route::get('coba', [DashboardController::class, 'index']);
