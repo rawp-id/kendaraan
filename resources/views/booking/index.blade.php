@@ -36,7 +36,7 @@
                                                 @if (old('driver') == $driver->id) selected @endif>
                                                 {{ $driver->name }}
                                                 @if ($driver->license)
-                                                    <span class="text-green">(License Active)</span>
+                                                    <span>(License Active)</span>
                                                 @endif
                                             </option>
                                         @endforeach

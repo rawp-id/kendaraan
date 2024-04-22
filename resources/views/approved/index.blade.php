@@ -25,6 +25,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Driver</th>
+                    <th scope="col">Code Car</th>
                     <th scope="col">Car</th>
                     <th scope="col">Type</th>
                     <th scope="col">Start</th>
@@ -42,6 +43,7 @@
                                 <i class="bi bi-patch-check-fill"></i>
                             @endif
                         </td>
+                        <td>{{ $approval->booking->vehicle->number_vehicle }}</td>
                         <td>{{ $approval->booking->vehicle->merk }}</td>
                         <td>{{ $approval->booking->vehicle->type }}</td>
                         <td>{{ $approval->booking->start_date }}</td>

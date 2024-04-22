@@ -39,27 +39,34 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'vehicles') active @endif"
+                            aria-current="page" href="/vehicles">
+                            <i class="bi bi-car-front"></i>
+                            Vehicle
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'bookings') active @endif"
                             aria-current="page" href="/bookings">
                             <i class="bi bi-card-text"></i>
                             Booking
                         </a>
                     </li>
-                    @if (Auth::user()->role->role=='superadmin')
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'check') active @endif"
-                            aria-current="page" href="/check">
-                            <i class="bi bi-check-circle"></i>
-                            Check
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'approvals') active @endif"
-                            aria-current="page" href="/approvals">
-                            <i class="bi bi-bar-chart-fill"></i>
-                            Approval
-                        </a>
-                    </li>    
+                    @if (Auth::user()->role->role == 'superadmin')
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'check') active @endif"
+                                aria-current="page" href="/check">
+                                <i class="bi bi-check-circle"></i>
+                                Check
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'approvals') active @endif"
+                                aria-current="page" href="/approvals">
+                                <i class="bi bi-bar-chart-fill"></i>
+                                Approval
+                            </a>
+                        </li>
                     @endif
                 </ul>
 

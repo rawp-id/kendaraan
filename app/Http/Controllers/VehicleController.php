@@ -9,7 +9,10 @@ class VehicleController extends Controller
 {
     public function index()
     {
-        return Vehicle::all();
+        return view('vehicle.index', [
+            'title' => 'vehicles',
+            'vehicles' => Vehicle::all()
+        ]);
     }
 
     public function store(Request $request)
@@ -17,13 +20,11 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'merk' => 'required|string',
             'type' => 'required|string',
-            'status' => 'required|in:available,in service,unavailable',
             'number_vehicle' => 'nullable|unique:vehicles',
-            'last_service_date' => 'nullable|date',
         ]);
 
         $vehicle = Vehicle::create($validated);
-        return response()->json($vehicle, 201);
+        return redirect('/vehicles')->with('success', 'New Vehicle Successfull Saved');
     }
 
     public function show(Vehicle $vehicle)
@@ -37,7 +38,7 @@ class VehicleController extends Controller
             'merk' => 'required|string',
             'type' => 'required|string',
             'status' => 'required|in:available,in-service,unavailable',
-            'number_vehicle' => 'nullable|unique:vehicles,number_vehicle,'.$vehicle->id,
+            'number_vehicle' => 'nullable|unique:vehicles,number_vehicle,' . $vehicle->id,
             'last_service_date' => 'nullable|date',
         ]);
 
@@ -48,6 +49,6 @@ class VehicleController extends Controller
     public function destroy(Vehicle $vehicle)
     {
         $vehicle->delete();
-        return response()->json(null, 204);
+        return redirect('/vehicles')->with('success', 'Delete Vehicle Successfull');
     }
 }

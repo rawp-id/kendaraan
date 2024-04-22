@@ -28,27 +28,38 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="/drivers">
+                            <form method="POST" action="/vehicles">
                                 @csrf
                                 <div class="mb-3">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror "
-                                        name="name" value="{{ old('name') }}" required>
-                                    @error('name')
+                                    <label class="form-label">Number Vehicle</label>
+                                    <input type="text"
+                                        class="form-control @error('number_vehicle') is-invalid @enderror "
+                                        name="number_vehicle" value="{{ old('number_vehicle') }}" required>
+                                    @error('number_vehicle')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">License</label>
-                                    <input type="text" class="form-control @error('license') is-invalid @enderror"
-                                        name="license" value="{{ old('license') }}" required>
-                                    @error('license')
+                                    <label class="form-label">Merk</label>
+                                    <input type="text" class="form-control @error('merk') is-invalid @enderror "
+                                        name="merk" value="{{ old('merk') }}" required>
+                                    @error('merk')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Vehicle</label>
+                                    <select class="form-select" aria-label="Default select example" name="type" required>
+                                        <option>Open this select menu</option>
+                                        <option value="personnel" @if (old('type') == 'personnel') selected @endif>
+                                            Personnel</option>
+                                        <option value="cargo" @if (old('type') == 'cargo') selected @endif>Cargo
+                                        </option>
+                                    </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
@@ -71,39 +82,39 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Number Vehicle</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Status</th>
                     <th scope="col">Last Service</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($drivers as $driver)
+                @foreach ($vehicles as $vehicle)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $driver->name }}
-                            @if ($driver->license)
-                                <i class="bi bi-patch-check-fill"></i>
-                            @endif
-                        </td>
+                        <td>{{ $vehicle->number_vehicle ?? '-' }}</td>
+                        <td>{{ $vehicle->merk }}</td>
+                        <td>{{ $vehicle->type }}</td>
                         <td
-                            class="@if ($driver->status == 'available') text-success
-                            @elseif ($driver->status == 'in-service')
+                            class="@if ($vehicle->status == 'available') text-success
+                            @elseif ($vehicle->status == 'in-service')
                             text-warning
                             @else
                             text-danger @endif
                             ">
-                            {{ $driver->status }}
+                            {{ $vehicle->status }}
                         </td>
-                        <td>{{ $driver->last_service_date ?? '-' }}</td>
+                        <td>{{ $vehicle->last_service_date ?? '-' }}</td>
                         <td>
                             {{-- <button type="button" class="btn btn-sm btn-info"><i class="bi bi-pencil-square"></i></button> --}}
-                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteDriver{{ $driver->id }}"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash"
+                                    data-bs-toggle="modal" data-bs-target="#deleteVehicle{{ $vehicle->id }}"></i></button>
                         </td>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="deleteDriver{{ $driver->id }}" data-bs-backdrop="static"
+                    <div class="modal fade" id="deleteVehicle{{ $vehicle->id }}" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -117,7 +128,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                    <form action="/drivers/{{ $driver->id }}" method="POST">
+                                    <form action="/vehicles/{{ $vehicle->id }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger">Yes</button>
