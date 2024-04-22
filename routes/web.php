@@ -31,4 +31,5 @@ Route::Resource('approvals', ApprovalController::class);
 Route::get('login',[AuthController::class, 'showLoginForm']);
 Route::post('login',[AuthController::class, 'login']);
 Route::get('register',[AuthController::class, 'showRegistrationForm']);
-Route::post('register',[AuthController::class, '@register']);
+Route::post('register',[AuthController::class, 'register']);
+Route::get('logout',[AuthController::class, 'logout']);

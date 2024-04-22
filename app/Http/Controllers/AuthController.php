@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // Method untuk menampilkan form login
     public function showLoginForm()
     {
         return view('auth.login', [
@@ -18,7 +17,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // Method untuk menangani proses login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -28,7 +26,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/dashboard');
         }
 
         return back()->withErrors([
@@ -36,7 +34,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // Method untuk menampilkan form registrasi
     public function showRegistrationForm()
     {
         return view('auth.register', [
@@ -44,7 +41,6 @@ class AuthController extends Controller
         ]);
     }
 
-    // Method untuk menangani proses registrasi
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -61,10 +57,9 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect('/dashboard');
     }
 
-    // Method untuk logout
     public function logout(Request $request)
     {
         Auth::logout();

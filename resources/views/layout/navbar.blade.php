@@ -10,14 +10,14 @@
             @if ($title == 'login' || $title == 'register')
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'dashboard') active @endif"
-                            aria-current="page" href="/dashboard">
+                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'login') active @endif"
+                            aria-current="page" href="/login">
                             Login
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'dashboard') active @endif"
-                            aria-current="page" href="/dashboard">
+                        <a class="nav-link d-flex align-items-center gap-2 @if ($title == 'register') active @endif"
+                            aria-current="page" href="/register">
                             Register
                         </a>
                     </li>
