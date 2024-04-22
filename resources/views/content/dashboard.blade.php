@@ -16,5 +16,43 @@
         </div>
     </div>
 
+    <h4 class="text-center">Grafik Booking</h4>
     <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+
+    <!-- Chart Js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chart js -->
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    <?php
+                    foreach ($datas as $data) {
+                        echo '"' . $data->booking_date . '",';
+                    }
+                    ?>
+                ],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [
+                        @foreach ($datas as $data)
+                            {{ $data->total . ',' }}
+                        @endforeach
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 @endsection

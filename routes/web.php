@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Middleware\AdminMiddleware;
@@ -17,11 +18,7 @@ Route::get('/', function () {
 //     return view('layout.app');
 // });
 
-Route::get('/dashboard', function () {
-    return view('content.dashboard', [
-        'title' => 'dashboard'
-    ]);
-})->middleware('auth');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('login', [AuthController::class, 'showLoginForm']);
 Route::post('login', [AuthController::class, 'login']);
@@ -44,3 +41,5 @@ Route::middleware([SuperAdminMiddleware::class])->group(function () {
     Route::get('check', [ApprovalController::class, 'check']);
     Route::Resource('approvals', ApprovalController::class);
 });
+
+Route::get('coba', [DashboardController::class, 'index']);
