@@ -216,18 +216,10 @@
     <!-- running text -->
     <div class="news-marquee">
         <div class="news-content">
-            <span class="news-item">Jelajahi Inovasi Terbaru di Dunia Hidrasi dengan Smart Dispenser—Kesehatan
-                dan
-                Kemudahan dalam Satu Sentuhan!</span>
-            <span class="news-item">Tetap Terhidrasi Lebih Mudah Dengan Smart Dispenser! Pantau Asupan Air Anda
-                Secara
-                Real-Time.</span>
-            <span class="news-item">Smart Dispenser: Solusi Cerdas Untuk Hidrasi Sehari-hari. Temukan Fitur
-                Pemantauan
-                Hidrasi Otomatis Kami.</span>
-            <span class="news-item">Perbarui Rutinitas Minum Anda dengan Smart Dispenser—Teknologi yang
-                Beradaptasi
-                dengan Kebutuhan Hidrasi Anda.</span>
+            <span class="news-item">......Berita......</span>
+            <span class="news-item">......Berita......</span>
+            <span class="news-item">......Berita......</span>
+            <span class="news-item">......Berita......</span>
         </div>
     </div>
 
