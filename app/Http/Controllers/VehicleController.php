@@ -36,7 +36,7 @@ class VehicleController extends Controller
         $validated = $request->validate([
             'merk' => 'required|string',
             'type' => 'required|string',
-            'status' => 'required|in:available,in service,unavailable',
+            'status' => 'required|in:available,in-service,unavailable',
             'number_vehicle' => 'nullable|unique:vehicles,number_vehicle,'.$vehicle->id,
             'last_service_date' => 'nullable|date',
         ]);

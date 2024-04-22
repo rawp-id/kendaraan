@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('merk');
             $table->enum('type', ['personnel', 'cargo']);
-            $table->enum('status', ['available', 'in service', 'unavailable']);
+            $table->enum('status', ['available', 'service', 'unavailable']);
             $table->string('number_vehicle')->unique()->nullable();
             $table->timestamp('last_service_date')->nullable();
             $table->timestamps();

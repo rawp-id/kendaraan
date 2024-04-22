@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             Driver::create([
-                'name' => fake()->name()
+                'name' => fake()->name(),
+                'license' => fake()->randomElement([fake()->title(), null])
             ]);
         }
 
@@ -53,6 +54,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => fake()->numberBetween(1,5),
                 'vehicle_id' => fake()->numberBetween(1,5),
                 'driver_id' => fake()->numberBetween(1,5),
+                'start_date' => now(),
+                'end_date' => fake()->dateTime(),
             ]);
         }
 

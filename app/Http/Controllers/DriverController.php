@@ -10,20 +10,22 @@ class DriverController extends Controller
 {
     public function index()
     {
-        return Driver::all();
+        return view('driver.index',[
+            'title'=>'drivers',
+            'drivers'=>Driver::all()
+        ]);
+        // return Driver::all();
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'license' => 'required|string|max:255',
-            'status' => 'required|in:available,in service,unavailable',
-            'last_service_date' => 'nullable|date'
+            'license' => 'required|string|max:255'
         ]);
 
-        $driver = Driver::create($validated);
-        return response()->json($driver, 201);
+        Driver::create($validated);
+        return redirect('/drivers')->with('success', 'New Driver Successfull Saved');
     }
 
     public function show(Driver $driver)
@@ -36,7 +38,7 @@ class DriverController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'license' => 'required|string|max:255',
-            'status' => 'required|in:available,in service,unavailable',
+            'status' => 'required|in:available,in-service,unavailable',
             'last_service_date' => 'nullable|date'
         ]);
 
@@ -47,7 +49,7 @@ class DriverController extends Controller
     public function destroy(Driver $driver)
     {
         $driver->delete();
-        return response()->json(null, 204);
+        return redirect('/drivers')->with('success', 'Delete Driver Successfull');
     }
 }
 

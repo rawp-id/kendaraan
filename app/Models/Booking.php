@@ -28,4 +28,9 @@ class Booking extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
+
+    public function approval(): BelongsTo
+    {
+        return $this->belongsTo(Approval::class);
+    }
 }

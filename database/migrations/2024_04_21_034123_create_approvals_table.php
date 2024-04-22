@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('approvals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('booking_id');
-            $table->tinyInteger('level');
             $table->enum('status', ['pending', 'approved', 'rejected']);
             $table->timestamp('approved_at');
             $table->timestamps();

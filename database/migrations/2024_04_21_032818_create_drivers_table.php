@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('status', ['available', 'in service', 'unavailable']);
+            $table->string('license')->nullable();
+            $table->enum('status', ['available', 'service', 'unavailable']);
             $table->timestamp('last_service_date')->nullable();
             $table->timestamps();
         });

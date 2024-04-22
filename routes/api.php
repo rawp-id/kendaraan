@@ -11,8 +11,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::apiResource('vehicles', VehicleController::class);
-Route::apiResource('drivers', DriverController::class);
-Route::apiResource('bookings', BookingController::class);
-Route::apiResource('approvals', ApprovalController::class);
+// Route::apiResource('vehicles', VehicleController::class);
+// Route::apiResource('drivers', DriverController::class);
+// Route::apiResource('bookings', BookingController::class);
+// Route::apiResource('approvals', ApprovalController::class);
 
