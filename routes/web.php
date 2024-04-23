@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware([SuperAdminMiddleware::class])->group(function () {
+    Route::get('check', [ApprovalController::class, 'check']);
     Route::Resource('approvals', ApprovalController::class);
 });
 
