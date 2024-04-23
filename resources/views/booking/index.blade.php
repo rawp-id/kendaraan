@@ -3,10 +3,6 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Booking</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            {{-- <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div> --}}
             <button type="button" class="btn btn-sm btn-primary d-flex align-items-center gap-1 mx-2" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
                 <i class="bi bi-plus-circle"></i>
@@ -97,11 +93,7 @@
         <div class="input-group mb-3">
             <input type="date" class="form-control" name="date">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filter</button>
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Export</button>
         </div>
-        {{-- <button type="button" class="btn btn-lg d-flex align-items-center">
-            <input type="date" class="form-control" name="date">
-        </button> --}}
     </form>
 
     <div class="table-responsive mt-3">

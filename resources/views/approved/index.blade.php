@@ -15,7 +15,6 @@
         <div class="input-group mb-3">
             <input type="date" class="form-control" name="date">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filter</button>
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Export</button>
         </div>
     </form>
 
