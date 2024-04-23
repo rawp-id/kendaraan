@@ -27,10 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::Resource('drivers', DriverController::class);
     Route::Resource('bookings', BookingController::class);
     Route::get('bookings/status/{booking:id}', [BookingController::class, 'status']);
+    Route::Resource('approvals', ApprovalController::class);
 });
 
 Route::middleware([SuperAdminMiddleware::class])->group(function () {
     Route::get('check', [ApprovalController::class, 'check']);
-    Route::Resource('approvals', ApprovalController::class);
 });
 
